@@ -1,11 +1,11 @@
-class Fish extends Denizen {
-
+class SeaWeed extends Denizen {
   constructor(options) {
-    super(options);
-    this.imageUri = '/images/yellow-fish.png';
-    this.maxSwimSpeed = 100;
+    super(options); // Call super to run the code inside `Fish`'s constructor
+    this.imageUri = '/images/seawead.png'; // Set the image
+    this.maxSwimSpeed = 0;
     this.makeNewVelocity();
-    this.isTasty = true;
+    this.isTasty = false;
+    this.waterFriction = 100;
   }
 
   generateSwimVelocity(max, min) {
@@ -23,9 +23,6 @@ class Fish extends Denizen {
     var delta = this.swimVelocity.scale(PHYSICS_TICK_SIZE_S);
     this.position.addMut(delta);
     this.timeUntilSpeedChange -= PHYSICS_TICK_SIZE_S;
-    if (this.timeUntilSpeedChange < 0) {
-      this.makeNewVelocity();
-    }
   }
 
   makeNewVelocity(minMag) {
